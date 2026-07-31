@@ -52,7 +52,8 @@ static_assert(sizeof(f64) == 8, "Size of double must be 64-bits");
 
 #define __STRINGIFY__(x) #x
 
-#ifdef __cplusplus
+// __CUDACC__, not __cplusplus: plain C++ projects must not have to find the CUDA runtime
+#ifdef __CUDACC__
 #include <cuda_runtime.h>
 extern cudaStream_t g_compute_stream;
 #endif
